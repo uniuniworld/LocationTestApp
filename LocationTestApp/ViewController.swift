@@ -11,14 +11,19 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
-    var myLocationManager = CLLocationManager()
+    var myLocationManager: CLLocationManager!
     
     var myTimer: Timer!
+    
+    var latitudeNow: String = ""
+    var longitudeNow: String = ""
     
     @IBOutlet weak var timerCountLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        myLocationManager = CLLocationManager()
         
         //　位置情報取得の設定
         myLocationManager.delegate = self
