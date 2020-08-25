@@ -45,8 +45,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
 
         // 10秒ごとにlocationUpdate()を実行する
-        myTimer = Timer.scheduledTimer(timeInterval: Double(5), target: self, selector: #selector(locationUpdate), userInfo: nil, repeats: true)
-        myTimer.fire()
+//        myTimer = Timer.scheduledTimer(timeInterval: Double(5), target: self, selector: #selector(locationUpdate), userInfo: nil, repeats: true)
+//        myTimer.fire()
 
         
         
