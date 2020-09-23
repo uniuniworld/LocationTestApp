@@ -10,12 +10,19 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    var window: UIWindow?
+    var backgroundTaskId: UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier(rawValue: 0)
 
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
+    }
+    
+    func applicationWillResignActive(_ application: UIApplication) {
+        //self.backgroundTaskId = application.beginbackgroundtaskwithexp
     }
 
     // MARK: UISceneSession Lifecycle
