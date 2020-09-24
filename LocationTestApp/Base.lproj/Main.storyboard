@@ -139,6 +139,8 @@
                     <connections>
                         <outlet property="latitudeLabel" destination="rc0-wc-4ex" id="SlA-67-Pfa"/>
                         <outlet property="longitudeLabel" destination="cCS-i0-p8u" id="Xpa-pv-J7Z"/>
+                        <outlet property="startButton" destination="OnX-e4-FNx" id="9pF-f9-5EN"/>
+                        <outlet property="stopButton" destination="fB2-Zy-8RD" id="nuW-rO-ggi"/>
                         <outlet property="tableView" destination="FDb-XV-MYl" id="aQv-TK-reD"/>
                         <outlet property="timeLabel" destination="kAq-Uf-gFb" id="gXd-Gp-acu"/>
                     </connections>

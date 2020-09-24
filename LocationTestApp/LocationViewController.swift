@@ -23,6 +23,8 @@ class LocationViewController: UIViewController, UITableViewDelegate, UITableView
     var userDefaults = UserDefaults.standard
     var locations = [[String]]()
     
+    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
@@ -55,6 +57,9 @@ class LocationViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.dataSource = self
         
         tableView.register(UINib(nibName: "LocationCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        
+        startButton.isEnabled = true
+        stopButton.isEnabled = false
         
         // Do any additional setup after loading the view.
     }
@@ -137,6 +142,8 @@ class LocationViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func pressClearButton(_ sender: Any) {
         userDefaults.removeObject(forKey: "位置情報")
         locations.removeAll()
+        tableView.reloadData()
+        
     }
     
     @IBAction func pressReloadButton(_ sender: Any) {
@@ -152,11 +159,17 @@ class LocationViewController: UIViewController, UITableViewDelegate, UITableView
         myTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(locationUpdate), userInfo: nil, repeats: true)
         myTimer.fire()
         
+        startButton.isEnabled = false
+        stopButton.isEnabled = true
+        
     }
     
     @IBAction func pressStopButton(_ sender: Any) {
-        myTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(locationUpdate), userInfo: nil, repeats: true)
+        //myTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(locationUpdate), userInfo: nil, repeats: true)
         myTimer.invalidate()
+        
+        startButton.isEnabled = true
+        stopButton.isEnabled = false
         
     }
 }
