@@ -83,7 +83,6 @@ class LocationViewController: UIViewController, UITableViewDelegate, UITableView
         cell.latitudeLabel.text = locations[indexPath.row][1] ?? "nil"
         cell.longitudeLabel.text = locations[indexPath.row][2] ?? "nil"
         
-        
         return cell
         
     }
@@ -117,7 +116,6 @@ class LocationViewController: UIViewController, UITableViewDelegate, UITableView
         longitudeLabel.text = longitudeNow ?? ""
         
         self.tableView.reloadData()
-        
         
         //locations.append(latitudeNow!)
         //locations.append(longitudeNow)
@@ -156,7 +154,7 @@ class LocationViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func pressStartButton(_ sender: Any) {
         
         // ５秒ごとにlocationUpdate()を実行する
-        myTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(locationUpdate), userInfo: nil, repeats: true)
+        myTimer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(locationUpdate), userInfo: nil, repeats: true)
         myTimer.fire()
         
         startButton.isEnabled = false
