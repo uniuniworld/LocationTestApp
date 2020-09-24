@@ -10,8 +10,8 @@ import UIKit
 
 class LocationCell: UITableViewCell {
 
-    @IBOutlet weak var timeLabel: UIView!
     
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
     
@@ -19,8 +19,9 @@ class LocationCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        contentView.layer.cornerRadius = 10
+        contentView.layer.cornerRadius = 20
         contentView.layer.masksToBounds = true
+        contentView.backgroundColor = UIColor.lightGray
         
         
         
