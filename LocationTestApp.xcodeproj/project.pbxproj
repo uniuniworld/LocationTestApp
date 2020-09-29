@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,12 +16,18 @@
 		3C7F194424EE1BC00047AE52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C7F194224EE1BC00047AE52 /* Main.storyboard */; };
 		3C7F194624EE1BC10047AE52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C7F194524EE1BC10047AE52 /* Assets.xcassets */; };
 		3C7F194924EE1BC10047AE52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C7F194724EE1BC10047AE52 /* LaunchScreen.storyboard */; };
+		3CB942C02522FFD8004BA349 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB942BF2522FFD8004BA349 /* TabBarController.swift */; };
+		3CB942C525230101004BA349 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB942C425230101004BA349 /* LocationService.swift */; };
+		3CB942CA25230774004BA349 /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB942C925230774004BA349 /* testViewController.swift */; };
+		3CF0FF812522C66F003CD74D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CF0FF802522C66F003CD74D /* GoogleService-Info.plist */; };
+		F249436F70B7658B43F28638 /* Pods_LocationTestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7BA80BAC54606140F7CCAF0 /* Pods_LocationTestApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3C0671B1251AE2F80023F223 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		3C0671B8251AE3EE0023F223 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		3C0671B9251AE3EE0023F223 /* LocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationCell.xib; sourceTree = "<group>"; };
+		3C384318251DCADA00D66254 /* LocationTestApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LocationTestApp.entitlements; sourceTree = "<group>"; };
 		3C7F193924EE1BC00047AE52 /* LocationTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocationTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C7F193C24EE1BC00047AE52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C7F193E24EE1BC00047AE52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,6 +36,13 @@
 		3C7F194524EE1BC10047AE52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C7F194824EE1BC10047AE52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C7F194A24EE1BC10047AE52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CB942BF2522FFD8004BA349 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		3CB942C425230101004BA349 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		3CB942C925230774004BA349 /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
+		3CF0FF802522C66F003CD74D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8FE4298BA01ABF6DFE4E0205 /* Pods-LocationTestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocationTestApp.debug.xcconfig"; path = "Target Support Files/Pods-LocationTestApp/Pods-LocationTestApp.debug.xcconfig"; sourceTree = "<group>"; };
+		B1364F3299BB44A4A67F71CA /* Pods-LocationTestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocationTestApp.release.xcconfig"; path = "Target Support Files/Pods-LocationTestApp/Pods-LocationTestApp.release.xcconfig"; sourceTree = "<group>"; };
+		E7BA80BAC54606140F7CCAF0 /* Pods_LocationTestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocationTestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F249436F70B7658B43F28638 /* Pods_LocationTestApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +71,8 @@
 			children = (
 				3C7F193B24EE1BC00047AE52 /* LocationTestApp */,
 				3C7F193A24EE1BC00047AE52 /* Products */,
+				D85AD82BEC0763A46863B9C0 /* Pods */,
+				6C002A408B8628B585CC7E5C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,17 +87,63 @@
 		3C7F193B24EE1BC00047AE52 /* LocationTestApp */ = {
 			isa = PBXGroup;
 			children = (
+				3CB942C6252301E1004BA349 /* ViewController */,
+				3CB942C2252300BB004BA349 /* Model */,
+				3C384318251DCADA00D66254 /* LocationTestApp.entitlements */,
 				3C0671B7251AE39D0023F223 /* CustomCell */,
 				3C7F193C24EE1BC00047AE52 /* AppDelegate.swift */,
 				3C7F193E24EE1BC00047AE52 /* SceneDelegate.swift */,
-				3C7F194024EE1BC00047AE52 /* ViewController.swift */,
 				3C7F194224EE1BC00047AE52 /* Main.storyboard */,
-				3C0671B1251AE2F80023F223 /* LocationViewController.swift */,
 				3C7F194524EE1BC10047AE52 /* Assets.xcassets */,
 				3C7F194724EE1BC10047AE52 /* LaunchScreen.storyboard */,
 				3C7F194A24EE1BC10047AE52 /* Info.plist */,
+				3CF0FF802522C66F003CD74D /* GoogleService-Info.plist */,
 			);
 			path = LocationTestApp;
+			sourceTree = "<group>";
+		};
+		3CB942C2252300BB004BA349 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3CB942C3252300D1004BA349 /* Location */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3CB942C3252300D1004BA349 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				3CB942C425230101004BA349 /* LocationService.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		3CB942C6252301E1004BA349 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3C0671B1251AE2F80023F223 /* LocationViewController.swift */,
+				3C7F194024EE1BC00047AE52 /* ViewController.swift */,
+				3CB942BF2522FFD8004BA349 /* TabBarController.swift */,
+				3CB942C925230774004BA349 /* testViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		6C002A408B8628B585CC7E5C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E7BA80BAC54606140F7CCAF0 /* Pods_LocationTestApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D85AD82BEC0763A46863B9C0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8FE4298BA01ABF6DFE4E0205 /* Pods-LocationTestApp.debug.xcconfig */,
+				B1364F3299BB44A4A67F71CA /* Pods-LocationTestApp.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -91,9 +153,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3C7F194D24EE1BC10047AE52 /* Build configuration list for PBXNativeTarget "LocationTestApp" */;
 			buildPhases = (
+				AEB8575055979487D61E029C /* [CP] Check Pods Manifest.lock */,
 				3C7F193524EE1BC00047AE52 /* Sources */,
 				3C7F193624EE1BC00047AE52 /* Frameworks */,
 				3C7F193724EE1BC00047AE52 /* Resources */,
+				A29E0040E111EC39AC0F7B35 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -144,6 +208,7 @@
 			files = (
 				3C7F194924EE1BC10047AE52 /* LaunchScreen.storyboard in Resources */,
 				3C7F194624EE1BC10047AE52 /* Assets.xcassets in Resources */,
+				3CF0FF812522C66F003CD74D /* GoogleService-Info.plist in Resources */,
 				3C0671BB251AE3EE0023F223 /* LocationCell.xib in Resources */,
 				3C7F194424EE1BC00047AE52 /* Main.storyboard in Resources */,
 			);
@@ -151,14 +216,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A29E0040E111EC39AC0F7B35 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LocationTestApp/Pods-LocationTestApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LocationTestApp/Pods-LocationTestApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LocationTestApp/Pods-LocationTestApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AEB8575055979487D61E029C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LocationTestApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3C7F193524EE1BC00047AE52 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CB942C525230101004BA349 /* LocationService.swift in Sources */,
 				3C7F194124EE1BC00047AE52 /* ViewController.swift in Sources */,
+				3CB942CA25230774004BA349 /* testViewController.swift in Sources */,
 				3C0671BA251AE3EE0023F223 /* LocationCell.swift in Sources */,
 				3C7F193D24EE1BC00047AE52 /* AppDelegate.swift in Sources */,
+				3CB942C02522FFD8004BA349 /* TabBarController.swift in Sources */,
 				3C7F193F24EE1BC00047AE52 /* SceneDelegate.swift in Sources */,
 				3C0671B2251AE2F80023F223 /* LocationViewController.swift in Sources */,
 			);
@@ -302,8 +412,10 @@
 		};
 		3C7F194E24EE1BC10047AE52 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FE4298BA01ABF6DFE4E0205 /* Pods-LocationTestApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LocationTestApp/LocationTestApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HA3L6C6VRC;
 				INFOPLIST_FILE = LocationTestApp/Info.plist;
@@ -321,8 +433,10 @@
 		};
 		3C7F194F24EE1BC10047AE52 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1364F3299BB44A4A67F71CA /* Pods-LocationTestApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LocationTestApp/LocationTestApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HA3L6C6VRC;
 				INFOPLIST_FILE = LocationTestApp/Info.plist;
