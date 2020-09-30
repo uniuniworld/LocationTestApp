@@ -13,9 +13,15 @@ import CoreLocation
 public class LocationService: NSObject, CLLocationManagerDelegate {
     
     public static var sharedInstance = LocationService()
-    let locationManager: CLLocationManager
+    var locationManager: CLLocationManager!
     var locationDataArray: [CLLocation]
     var useFilter: Bool
+    
+    var latitude = "hennenenene"
+    var longitude: String?
+    var time: String?
+    
+    
     
     override init() {
         locationManager = CLLocationManager()
@@ -23,9 +29,9 @@ public class LocationService: NSObject, CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager.distanceFilter = 5
         
-        locationManager.requestWhenInUseAuthorization()
+        //locationManager.requestWhenInUseAuthorization()
         locationManager.allowsBackgroundLocationUpdates = true
-        locationManager.pausesLocationUpdatesAutomatically = false
+        //locationManager.pausesLocationUpdatesAutomatically = false
         locationDataArray = [CLLocation]()
         
         useFilter = true
@@ -34,6 +40,32 @@ public class LocationService: NSObject, CLLocationManagerDelegate {
         
         locationManager.delegate = self
     }
+    
+    func getLocation() {
+        
+        // 位置情報更新　ストップしてスタート
+        locationManager.stopUpdatingLocation()
+        locationManager.startUpdatingLocation()
+        
+    }
+    
+    public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        // 緯度経度
+        let location = locations.first
+        let latestLatitude = location?.coordinate.latitude
+        let latestLongitude = location?.coordinate.longitude
+        latitude = String(latestLatitude!)
+        longitude = String(latestLongitude!)
+        
+        // 時間
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy-MM-dd 'at' HH:mm", options: 0, locale: Locale(identifier: "ja_JP"))
+        time = dateFormatter.string(from: date)
+        
+    }
+    
+    
     
     func startUpdatingLocation(){
         if CLLocationManager.locationServicesEnabled(){
@@ -45,28 +77,28 @@ public class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     
-    //MARK: CLLocationManagerDelegate protocol methods
-    public func locationManager(_ manager: CLLocationManager,
-                                didUpdateLocations locations: [CLLocation]){
-        
-        if let newLocation = locations.last{
-            print("(\(newLocation.coordinate.latitude), \(newLocation.coordinate.latitude))")
-            
-            var locationAdded: Bool
-            if useFilter{
-                locationAdded = filterAndAddLocation(newLocation)
-            }else{
-                locationDataArray.append(newLocation)
-                locationAdded = true
-            }
-            
-            
-            if locationAdded{
-                notifiyDidUpdateLocation(newLocation: newLocation)
-            }
-            
-        }
-    }
+//    //MARK: CLLocationManagerDelegate protocol methods
+//    public func locationManager(_ manager: CLLocationManager,
+//                                didUpdateLocations locations: [CLLocation]){
+//
+//        if let newLocation = locations.last{
+//            print("(\(newLocation.coordinate.latitude), \(newLocation.coordinate.latitude))")
+//
+//            var locationAdded: Bool
+//            if useFilter{
+//                locationAdded = filterAndAddLocation(newLocation)
+//            }else{
+//                locationDataArray.append(newLocation)
+//                locationAdded = true
+//            }
+//
+//
+//            if locationAdded{
+//                notifiyDidUpdateLocation(newLocation: newLocation)
+//            }
+//
+//        }
+//    }
     
     func filterAndAddLocation(_ location: CLLocation) -> Bool{
         let age = -location.timestamp.timeIntervalSinceNow

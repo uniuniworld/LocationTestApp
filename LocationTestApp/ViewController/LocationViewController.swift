@@ -69,7 +69,7 @@ class LocationViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 82
+        return 44
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

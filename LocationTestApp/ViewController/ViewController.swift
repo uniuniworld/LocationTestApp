@@ -116,6 +116,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func clearLabel(_ sender: Any) {
         latitudeLabel.text = "緯度"
         longitudeLabel.text = "経度"
+        
+        latitudeNow = ""
+        longitudeNow = ""
+        
         print("clear")
     }
     

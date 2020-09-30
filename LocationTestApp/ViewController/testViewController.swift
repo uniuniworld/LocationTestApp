@@ -27,7 +27,18 @@ class testViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func pressButton(_ sender: Any) {
+        
+        let location = LocationService()
+        location.getLocation()
+        print("緯度：\(location.latitude ?? "")")
+        print("経度：\(String(describing: location.longitude))")
+        print("時間：\(location.time)")
+        
+        
+        
+    }
+    
     /*
     // MARK: - Navigation
 

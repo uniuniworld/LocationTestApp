@@ -11,6 +11,7 @@ import UserNotifications
 import Firebase
 import FirebaseCore
 import FirebaseFirestore
+import CoreLocation
 
 
 @UIApplicationMain
@@ -19,11 +20,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
     
+    
+    var locationManager: CLLocationManager!
     var time: String?
     var longitude: String?
     var latitude: String?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        locationManager = CLLocationManager()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        locationManager.distanceFilter = 10
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.startUpdatingLocation()
+        locationManager.delegate = self
+        
         // Firebaseの共有インスタインスの設定
         FirebaseApp.configure()
         
@@ -33,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // [END set_messaging_delegate]
         
         // [START default_firestore]
-        FirebaseApp.configure()
+        //FirebaseApp.configure()
 
         let db = Firestore.firestore()
         // [END default_firestore]
@@ -123,7 +134,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("silent notification")
         print(#function)
         
-        //let vc = 
+        locationManager.stopUpdatingLocation()
+        locationManager.startUpdatingLocation()
+        print("緯度：\(latitude!)")
+        print("経度：\(longitude!)")
+        print("時間：\(time!)")
+        
+        
+//        // Add a new document with a generated ID
+//        var ref: DocumentReference? = nil
+//        ref = db.collection("users").addDocument(data: [
+//            "first": "Ada",
+//            "last": "Lovelace",
+//            "born": 1815
+//        ]) { err in
+//            if let err = err {
+//                print("Error adding document: \(err)")
+//            } else {
+//                print("Document added with ID: \(ref!.documentID)")
+//            }
+//        }
         
         completionHandler(UIBackgroundFetchResult.newData)
     }
@@ -221,4 +251,22 @@ extension AppDelegate : MessagingDelegate {
         // Note: This callback is fired at each app startup and whenever a new token is generated.
     }
     // [END refresh_token]
+}
+
+extension AppDelegate : CLLocationManagerDelegate {
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        // 緯度経度
+        let location = locations.first
+        let latestLatitude = location?.coordinate.latitude
+        let latestLongitude = location?.coordinate.longitude
+        latitude = String(latestLatitude!)
+        longitude = String(latestLongitude!)
+
+        // 時間
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "MM-dd 'at' HH:mm", options: 0, locale: Locale(identifier: "ja_JP"))
+        time = dateFormatter.string(from: date)
+    }
 }
