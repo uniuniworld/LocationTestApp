@@ -1,0 +1,5 @@
+location:
+  latitude: String?
+  longitude: String?
+  time: Date
+

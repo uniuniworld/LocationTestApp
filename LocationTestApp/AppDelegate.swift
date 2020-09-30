@@ -9,6 +9,9 @@
 import UIKit
 import UserNotifications
 import Firebase
+import FirebaseCore
+import FirebaseFirestore
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,6 +31,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // CloudMessagingのデリゲートを設定
         Messaging.messaging().delegate = self
         // [END set_messaging_delegate]
+        
+        // [START default_firestore]
+        FirebaseApp.configure()
+
+        let db = Firestore.firestore()
+        // [END default_firestore]
         
         UIApplication.shared.registerForRemoteNotifications()
         
@@ -54,6 +63,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // [END register_for_notifications]
         
         return true
+    }
+    
+    // 代行者に、アプリが無効になろうとしていることを伝えます。
+    func applicationWillResignActive(_ application: UIApplication) {
+    }
+    
+    // アプリがバックグラウンドになったことを委任者に伝えます。
+    func applicationDidEnterBackground(_ application: UIApplication) {
+    }
+    
+    // アプリがフォアグラウンドに入ろうとしていることを代表者に伝えます。
+    func applicationWillEnterForeground(_ application: UIApplication) {
+    }
+    
+    // アプリが非アクティブ状態からアクティブ状態に移行したことを通知します。
+    func applicationDidBecomeActive(_ application: UIApplication) {
+    }
+    
+    // アプリが終了しようとしているときにデリゲートに通知します。
+    func applicationWillTerminate(_ application: UIApplication) {
     }
     
     // [START receive_message]
@@ -94,7 +123,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("silent notification")
         print(#function)
         
-        let vc = 
+        //let vc = 
         
         completionHandler(UIBackgroundFetchResult.newData)
     }

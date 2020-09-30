@@ -82,12 +82,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rhD-jC-mB5">
+                                <rect key="frame" x="104" y="237" width="102" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Q7C-q5-4Vf"/>
                     </view>
                     <navigationItem key="navigationItem" id="Qa5-mT-SuA"/>
                     <connections>
+                        <outlet property="sendButton" destination="rhD-jC-mB5" id="vE3-so-HYP"/>
                         <outlet property="testLabel" destination="ZCV-wG-pnk" id="jy5-b8-laH"/>
                     </connections>
                 </viewController>

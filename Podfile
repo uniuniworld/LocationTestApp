@@ -11,4 +11,9 @@ target 'LocationTestApp' do
 pod 'Firebase/Messaging'
 pod 'Firebase/Core'
 
+pod 'Firebase/Firestore'
+
+# Optionally, include the Swift extensions if you're using Swift.
+pod 'FirebaseFirestoreSwift'
+
 end

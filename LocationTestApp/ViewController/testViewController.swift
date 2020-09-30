@@ -13,10 +13,16 @@ class testViewController: UIViewController {
     var text: String?
     @IBOutlet weak var testLabel: UILabel!
     
+    @IBOutlet weak var sendButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         testLabel.text = text
+        //testLabel.backgroundColor = .brown
+        testLabel.layer.cornerCurve = .continuous
+        
+        //sendButton.backgroundColor = .blue
+        sendButton.layer.cornerCurve = .continuous
 
         // Do any additional setup after loading the view.
     }
