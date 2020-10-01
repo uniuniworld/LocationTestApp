@@ -20,11 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
     
+    var db: Firestore!
+    
     
     var locationManager: CLLocationManager!
     var time: String?
     var longitude: String?
     var latitude: String?
+    //var array = [[String]]()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -46,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // [START default_firestore]
         //FirebaseApp.configure()
 
-        let db = Firestore.firestore()
+        setupFirestore()
         // [END default_firestore]
         
         UIApplication.shared.registerForRemoteNotifications()
@@ -134,6 +137,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("silent notification")
         print(#function)
         
+        // stop -> start で位置情報更新させる
         locationManager.stopUpdatingLocation()
         locationManager.startUpdatingLocation()
         print("緯度：\(latitude!)")
@@ -141,23 +145,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("時間：\(time!)")
         
         
-//        // Add a new document with a generated ID
-//        var ref: DocumentReference? = nil
-//        ref = db.collection("users").addDocument(data: [
-//            "first": "Ada",
-//            "last": "Lovelace",
-//            "born": 1815
-//        ]) { err in
-//            if let err = err {
-//                print("Error adding document: \(err)")
-//            } else {
-//                print("Document added with ID: \(ref!.documentID)")
-//            }
-//        }
+        // stop -> start で位置情報更新させる
+        
+        // Add a new document
+        var ref: DocumentReference? = nil
+        
+        ref = db.collection("location").addDocument(data: [
+            "latitude": latitude!,
+            "longitude": longitude!,
+            "time": time!
+        ]) { error in
+            if let error = error {
+                print("error adding document: \(error)")
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
+            }
+        }
         
         completionHandler(UIBackgroundFetchResult.newData)
     }
     // [END receive_message]
+    
+    func setupFirestore() {
+        // [START setup]
+        let settings = FirestoreSettings()
+        
+        Firestore.firestore().settings = settings
+        // [END setup]
+        
+        db = Firestore.firestore()
+        
+    }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Unable to register for remote notifications: \(error.localizedDescription)")

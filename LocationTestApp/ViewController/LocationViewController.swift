@@ -36,20 +36,6 @@ class LocationViewController: UIViewController, UITableViewDelegate, UITableView
         setupLocationManager()
         //locationUpdate()
         
-        //位置情報取得の設定
-        myLocationManager.delegate = self
-        myLocationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        myLocationManager.distanceFilter = 10
-        
-        // バックグラウンドでの位置情報更新を許可
-        myLocationManager.allowsBackgroundLocationUpdates = true
-        
-        // 初回起動時(位置情報サービス利用許可が設定されていない時)、許可を求めるダイアログを表示
-        if (CLLocationManager.authorizationStatus() == .notDetermined) {
-            myLocationManager.requestAlwaysAuthorization()
-        }
-        
-        
         //
         locations = userDefaults.array(forKey: "位置情報") as? [[String]] ?? [[String]]()
         
@@ -79,9 +65,9 @@ class LocationViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! LocationCell
         
-        cell.timeLabel.text = locations[indexPath.row][0] ?? "nil"
-        cell.latitudeLabel.text = locations[indexPath.row][1] ?? "nil"
-        cell.longitudeLabel.text = locations[indexPath.row][2] ?? "nil"
+        cell.latitudeLabel.text = ("緯度：\(locations[indexPath.row][1])")
+        cell.longitudeLabel.text = ("経度：\(locations[indexPath.row][2])")
+        cell.timeLabel.text = ("\(locations[indexPath.row][0])")
         
         return cell
         
@@ -90,6 +76,18 @@ class LocationViewController: UIViewController, UITableViewDelegate, UITableView
     
     func setupLocationManager() {
         myLocationManager = CLLocationManager()
+        //位置情報取得の設定
+        myLocationManager.delegate = self
+        myLocationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        myLocationManager.distanceFilter = 10
+        
+        // バックグラウンドでの位置情報更新を許可
+        myLocationManager.allowsBackgroundLocationUpdates = true
+        
+        // 初回起動時(位置情報サービス利用許可が設定されていない時)、許可を求めるダイアログを表示
+        if (CLLocationManager.authorizationStatus() == .notDetermined) {
+            myLocationManager.requestAlwaysAuthorization()
+        }
         // 位置情報取得許可ダイアログ表示
         guard let myLocationManager = myLocationManager else { return }
         myLocationManager.requestWhenInUseAuthorization()

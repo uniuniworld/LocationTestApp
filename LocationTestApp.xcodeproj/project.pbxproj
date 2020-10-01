@@ -10,6 +10,8 @@
 		3C0671B2251AE2F80023F223 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0671B1251AE2F80023F223 /* LocationViewController.swift */; };
 		3C0671BA251AE3EE0023F223 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0671B8251AE3EE0023F223 /* LocationCell.swift */; };
 		3C0671BB251AE3EE0023F223 /* LocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C0671B9251AE3EE0023F223 /* LocationCell.xib */; };
+		3C186E5E2525B21200E459AE /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C186E5D2525B21200E459AE /* MapViewController.swift */; };
+		3C186E602525CAF700E459AE /* ArrayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C186E5F2525CAF700E459AE /* ArrayData.swift */; };
 		3C7F193D24EE1BC00047AE52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7F193C24EE1BC00047AE52 /* AppDelegate.swift */; };
 		3C7F193F24EE1BC00047AE52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7F193E24EE1BC00047AE52 /* SceneDelegate.swift */; };
 		3C7F194124EE1BC00047AE52 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7F194024EE1BC00047AE52 /* ViewController.swift */; };
@@ -28,6 +30,8 @@
 		3C0671B1251AE2F80023F223 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		3C0671B8251AE3EE0023F223 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		3C0671B9251AE3EE0023F223 /* LocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationCell.xib; sourceTree = "<group>"; };
+		3C186E5D2525B21200E459AE /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		3C186E5F2525CAF700E459AE /* ArrayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayData.swift; sourceTree = "<group>"; };
 		3C384318251DCADA00D66254 /* LocationTestApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LocationTestApp.entitlements; sourceTree = "<group>"; };
 		3C7F193924EE1BC00047AE52 /* LocationTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocationTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C7F193C24EE1BC00047AE52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +113,7 @@
 			children = (
 				3CB942C3252300D1004BA349 /* Location */,
 				3C9C83D7252425C000A9E323 /* FirestoreManager.swift */,
+				3C186E5F2525CAF700E459AE /* ArrayData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -128,6 +133,7 @@
 				3C7F194024EE1BC00047AE52 /* ViewController.swift */,
 				3CB942BF2522FFD8004BA349 /* TabBarController.swift */,
 				3CB942C925230774004BA349 /* testViewController.swift */,
+				3C186E5D2525B21200E459AE /* MapViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -269,6 +275,8 @@
 				3CB942C525230101004BA349 /* LocationService.swift in Sources */,
 				3C7F194124EE1BC00047AE52 /* ViewController.swift in Sources */,
 				3CB942CA25230774004BA349 /* testViewController.swift in Sources */,
+				3C186E602525CAF700E459AE /* ArrayData.swift in Sources */,
+				3C186E5E2525B21200E459AE /* MapViewController.swift in Sources */,
 				3C0671BA251AE3EE0023F223 /* LocationCell.swift in Sources */,
 				3C7F193D24EE1BC00047AE52 /* AppDelegate.swift in Sources */,
 				3CB942C02522FFD8004BA349 /* TabBarController.swift in Sources */,

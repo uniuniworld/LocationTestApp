@@ -7,46 +7,133 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
 
 class testViewController: UIViewController {
-
-    var text: String?
-    @IBOutlet weak var testLabel: UILabel!
     
-    @IBOutlet weak var sendButton: UIButton!
+    var db: Firestore!
+    var text: String?
+    fileprivate var array = [[String]]()
+    
+    let cellIdentifier = "Cell"
+    @IBOutlet weak var tableView: UITableView!
+    var rowIndex: Int?
+    
+    //var array = AppDelegate().array
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        testLabel.text = text
-        //testLabel.backgroundColor = .brown
-        testLabel.layer.cornerCurve = .continuous
+        setupFirestore()
         
-        //sendButton.backgroundColor = .blue
-        sendButton.layer.cornerCurve = .continuous
-
+        tableView.register(UINib(nibName: "LocationCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        getDocuments()
+        //tableView.reloadData()
+        
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func pressButton(_ sender: Any) {
-        
-        let location = LocationService()
-        location.getLocation()
-        print("緯度：\(location.latitude ?? "")")
-        print("経度：\(String(describing: location.longitude))")
-        print("時間：\(location.time)")
-        
-        
-        
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func pressButton(_ sender: Any) {
+        getDocuments()
+        tableView.reloadData()
+//        db.collection("location").order(by: "time").getDocuments() { (querySnapshot, err) in
+//            if let err = err {
+//                print("Error getting documents: \(err)")
+//            } else {
+//                for document in querySnapshot!.documents {
+//                    print("\(document.documentID) => \(document.data())")
+//                    let ary = [
+//                        document.data()["latitude"] as! String,
+//                        document.data()["longitude"] as! String,
+//                        document.data()["time"] as! String
+//                    ]
+//                    self.array.append(ary)
+//                }
+//                print(self.array)
+//            }
+//        }
     }
-    */
+    
+    func setupFirestore() {
+        // [START setup]
+        let settings = FirestoreSettings()
+        
+        Firestore.firestore().settings = settings
+        // [END setup]
+        
+        db = Firestore.firestore()
+    }
+    
+    func getDocuments() {
+        db.collection("location").order(by: "time").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                self.array.removeAll()
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                    let ary = [
+                        document.data()["latitude"] as! String,
+                        document.data()["longitude"] as! String,
+                        document.data()["time"] as! String
+                    ]
+                    self.array.append(ary)
+                }
+                print(self.array)
+            }
+        }
+        tableView.reloadData()
+    }
+    
+}
 
+extension testViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return array.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! LocationCell
+        
+        cell.latitudeLabel.text = ("緯度：\(array[indexPath.row][0])")
+        cell.longitudeLabel.text = ("経度：\(array[indexPath.row][1])")
+        cell.timeLabel.text = ("\(array[indexPath.row][2])")
+        
+        return cell
+    }
+}
+
+extension testViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(array[indexPath.row])
+        rowIndex = indexPath.row
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "toMap", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toMap" {
+            guard let destination = segue.destination as? MapViewController else {
+                fatalError("Failed to prepare DetailViewController.")
+            }
+            
+            destination.latitude = Double(array[rowIndex!][0])!
+            destination.longitude = Double(array[rowIndex!][1])!
+            destination.time = array[rowIndex!][2]
+        }
+    }
 }

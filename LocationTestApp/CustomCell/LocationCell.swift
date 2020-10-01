@@ -19,12 +19,8 @@ class LocationCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        contentView.layer.cornerRadius = 20
+        contentView.layer.cornerRadius = 10
         contentView.layer.masksToBounds = true
-        contentView.backgroundColor = UIColor.lightGray
-        
-        
-        
         
         
     }
