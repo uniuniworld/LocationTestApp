@@ -137,3 +137,5 @@ extension testViewController: UITableViewDelegate {
         }
     }
 }
+
+//curl --header "Authorization: key=AAAAn_W1s6o:APA91bEsBT93maB0O5oK9A-wTa_vwgGgx5StU4PIySjk6Hl2WLdde4Y6Tni2e5pwJDNS4J6ZRhN2lv_bzK5RrRSS-2EfMb1trr1fBYBhWdDop3WisKmMdbqcn8CVoT_j9BFS9A7tiveF" --header Content-Type:"application/json" https://fcm.googleapis.com/fcm/send -d "{\"to\": \"/topics/ios\",\"content_available\":true}"
